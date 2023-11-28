@@ -24,7 +24,7 @@ export default class MyPlugin extends Plugin {
 
 	async onload() {
 		await this.loadSettings();
-
+		console.log("loading plugin");
 		// This creates an icon in the left ribbon.
 		const ribbonIconEl = this.addRibbonIcon(
 			"dice",
@@ -95,7 +95,9 @@ export default class MyPlugin extends Plugin {
 		);
 	}
 
-	onunload() {}
+	onunload() {
+		console.log("unonload plugin");
+	}
 
 	async loadSettings() {
 		this.settings = Object.assign(
