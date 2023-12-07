@@ -3,6 +3,7 @@ import {
 	Editor,
 	MarkdownView,
 	Modal,
+	Menu,
 	Notice,
 	Plugin,
 	PluginSettingTab,
@@ -35,6 +36,32 @@ export default class MyPlugin extends Plugin {
 				new Notice("Hello, world! again!");
 			}
 		);
+
+		// ribbonIcon 메뉴 생성하기
+		this.addRibbonIcon("apple", "Open menu", (event) => {
+			const menu = new Menu();
+
+			menu.addItem((item) =>
+				item
+					.setTitle("Copy")
+					.setIcon("documents")
+					.onClick(() => {
+						new Notice("Copied");
+					})
+			);
+
+			menu.addItem((item) =>
+				item
+					.setTitle("Paste")
+					.setIcon("paste")
+					.onClick(() => {
+						new Notice("Pasted");
+					})
+			);
+
+			menu.showAtMouseEvent(event);
+		});
+
 		// Perform additional things with the ribbon
 		ribbonIconEl.addClass("my-plugin-ribbon-class");
 
